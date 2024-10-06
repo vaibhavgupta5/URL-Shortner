@@ -1,4 +1,5 @@
-import React from "react";
+'use client'
+import React, { useEffect, useState } from "react";
 import {
   Table,
   TableBody,
@@ -8,30 +9,56 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { FaCopy } from "react-icons/fa";
 
 function LinkTable() {
+
+    const [urls, setUrls] = useState<any[]>([]);
+
+    useEffect(() => {
+        const storedData = localStorage.getItem('shortenedUrls');
+        if (storedData) {
+          const parsedData = JSON.parse(storedData);
+          setUrls(parsedData.reverse()); // Reverse to show the most recent first
+        }})
+
+        function formatDate(dateString: string): string {
+            const date = new Date(dateString);
+          
+            const day = String(date.getDate()).padStart(2, '0');
+            const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+            const year = date.getFullYear();
+          
+            return `${day}/${month}/${year}`;
+          }
+
   return (
     <Table className="w-full  ">
       <TableHeader className="h-[8vh]  ">
-        <TableRow className="bg-[#181E29]  text-white">
+        <TableRow className="bg-[#181E29] border-0  text-white">
           <TableHead className="text-white">Short Link</TableHead>
           <TableHead className="text-white">Original Link</TableHead>
-          <TableHead className="text-white">Method</TableHead>
-          <TableHead className="text-white">QR Code</TableHead>
+          
           <TableHead className="text-white">Satus</TableHead>
           <TableHead className="text-white">Date</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody >
-        <TableRow className="bg-[#101520]">
-          <TableCell className="font-medium text-[#C9CED6]">INV001</TableCell>
-          <TableCell className="font-medium text-[#C9CED6]">Paid</TableCell>
-          <TableCell className="font-medium text-[#C9CED6]">Credit Card</TableCell>
-          <TableCell className="font-medium text-[#C9CED6]">$250.00</TableCell>
-          <TableCell className="font-medium text-[#C9CED6]">$250.00</TableCell>
 
-          <TableCell className="font-medium text-[#C9CED6]">$250.00</TableCell>
-        </TableRow>
+      {urls.slice(0, 4).map((url: any, index: number) => (
+          <TableRow key={index} className="bg-[#101520] border-0 h-[6vh] hover:bg-red">
+            <TableCell className=" font-extralight flex  items-center text-[#C9CED6]">
+              <a href={url.shortUrl} target="_blank" rel="noopener noreferrer">
+                {url.shortUrl} 
+              </a>
+              <FaCopy className="ml-2 text-[20px] bg-[#192236] p-1 rounded-full" />
+
+            </TableCell>
+            <TableCell className="font-extralight text-[#C9CED6]">{url.originalUrl}</TableCell>
+            <TableCell className="font-extralight text-[#0AFF31]">Active</TableCell>
+            <TableCell className="font-extralight text-[#C9CED6]">{formatDate(url.createdDate)}</TableCell>
+          </TableRow>
+        ))}
       </TableBody>
     </Table>
   );

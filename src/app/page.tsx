@@ -15,7 +15,7 @@ export default function Home() {
           streamlines your online experience.
         </p>
         <InputField />
-        <div className="w-[80%] mt-12">
+        <div className="w-[80%] mt-8">
         <LinkTable />
         </div>
         
