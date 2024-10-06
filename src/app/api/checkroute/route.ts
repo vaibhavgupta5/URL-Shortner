@@ -40,7 +40,7 @@ export async function POST (req: NextRequest){
             }
           )
 
-    } catch (error) {
+    } catch (error:any) {
 
         return Response.json(
             {

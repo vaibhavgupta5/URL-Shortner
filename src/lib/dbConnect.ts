@@ -19,7 +19,7 @@ export const connectDB = async ()=> {
 
         console.log("Database connected")
 
-    } catch (e) {
+    } catch (e:any) {
         console.log("Server Error", e)
         process.exit()
     }

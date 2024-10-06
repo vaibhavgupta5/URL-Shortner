@@ -96,7 +96,7 @@ function InputField() {
 
       // Log to confirm saving
       console.log("Saved to local storage:", existingUrls);
-    } catch (error) {
+    } catch (error:any) {
       console.error("Error saving to local storage:", error);
     }
   };
