@@ -26,7 +26,9 @@ function LinkTable() {
         if (storedData) {
           const parsedData = JSON.parse(storedData);
           setUrls(parsedData.reverse()); // Reverse to show the most recent first
-        }})
+        }}, [])
+
+        
 
         function formatDate(dateString: string): string {
             const date = new Date(dateString);
