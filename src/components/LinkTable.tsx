@@ -35,7 +35,7 @@ function LinkTable() {
   return (
     <Table className="w-full  ">
       <TableHeader className="h-[8vh]  ">
-        <TableRow className="bg-[#181E29] border-0  text-white">
+        <TableRow className="bg-[#181E29] border-0 hover:bg-red text-white">
           <TableHead className="text-white">Short Link</TableHead>
           <TableHead className="text-white">Original Link</TableHead>
           
@@ -54,7 +54,11 @@ function LinkTable() {
               <FaCopy className="ml-2 text-[20px] bg-[#192236] p-1 rounded-full" />
 
             </TableCell>
-            <TableCell className="font-extralight text-[#C9CED6]">{url.originalUrl}</TableCell>
+            <TableCell className="font-extralight text-[#C9CED6]">
+            <a href={url.originalUrl} target="_blank" rel="noopener noreferrer">
+                {url.originalUrl} 
+              </a>
+            </TableCell>
             <TableCell className="font-extralight text-[#0AFF31]">Active</TableCell>
             <TableCell className="font-extralight text-[#C9CED6]">{formatDate(url.createdDate)}</TableCell>
           </TableRow>
