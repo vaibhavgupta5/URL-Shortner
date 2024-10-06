@@ -6,6 +6,8 @@ import { NextRequest } from "next/server";
 export async function POST (req: NextRequest){
     connectDB();
 
+    
+
     const {originalUrl} = await req.json();
 
     try {

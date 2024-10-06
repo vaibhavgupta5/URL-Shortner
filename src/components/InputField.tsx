@@ -9,6 +9,13 @@ import { useToast } from "@/hooks/use-toast";
 import { Switch } from "./ui/switch";
 import { Label } from "./ui/label";
 
+
+interface ShortenedUrl {
+  originalUrl: string;
+  shortUrl: string;
+  createdDate: string; // Add createdDate to the interface
+}
+
 function InputField() {
   const { toast } = useToast()
 
@@ -25,6 +32,15 @@ function InputField() {
 
 
       const sUrl  = (`${process.env.NEXT_PUBLIC_PAGE_URL}/z/${result.data.url?.toString()}`) || "";
+
+      const createdDate: string = new Date().toISOString();
+
+
+     
+
+       saveToLocalStorage(originalUrl, sUrl,createdDate); 
+
+
 
       if(copyOn){
         navigator.clipboard
@@ -54,6 +70,25 @@ function InputField() {
     }
   };
 
+
+  const saveToLocalStorage = (originalUrl: string, shortUrl: string, createdDate: string): void => {
+    try {
+      // Retrieve existing URLs from local storage
+      const existingUrls: ShortenedUrl[] = JSON.parse(localStorage.getItem('shortenedUrls') || '[]');
+      
+      // Add the new URL object to the existing array
+      existingUrls.push({ originalUrl, shortUrl, createdDate });
+
+      // Store the updated array back in local storage
+      localStorage.setItem('shortenedUrls', JSON.stringify(existingUrls));
+
+      // Log to confirm saving
+      console.log('Saved to local storage:', existingUrls);
+    } catch (error) {
+      console.error('Error saving to local storage:', error);
+    }
+  };
+
   return (
     <>
     <form className="flex bg-[#181E29] rounded-full p-1 border-[3px]  border-[#CCCCCC] w-[40%] justify-center items-center mb-8 mt-8">
@@ -77,7 +112,7 @@ function InputField() {
     <div className="flex justify-center items-center">
           <Switch
             id="clipboard"
-            className="data-[state=checked]:bg-[#181E29] data-[state=unchecked]:bg-[#181E29] border-[2px] border-[#353C4A] "
+            className="data-[state=checked]:bg-[#181E29] data-[sta    te=unchecked]:bg-[#181E29] border-[2px] border-[#353C4A] "
             onCheckedChange={(e) => setCopyOn(e)}
             defaultChecked
           />

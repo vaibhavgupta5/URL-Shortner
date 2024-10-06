@@ -16,6 +16,7 @@
     "axios": "^1.7.7",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "localStorage": "^1.0.4",
     "lucide": "^0.447.0",
     "lucide-react": "^0.447.0",
     "mongodb": "^6.9.0",
