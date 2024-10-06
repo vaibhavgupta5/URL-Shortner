@@ -63,6 +63,7 @@ function InputField() {
               variant: "destructive",
 
               title: "Failed to copy",
+              description: err.message
             });
           });
       }
