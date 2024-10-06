@@ -8,7 +8,7 @@ const isValidUrl = (url: any) => {
   return regex.test(url);
 };
 
-const normalizeUrl = (url: any) => {
+const normalizeUrl = (url: string) => {
   // Check if the URL already has a protocol
   if (!/^https?:\/\//i.test(url)) {
     return `https://${url}`;

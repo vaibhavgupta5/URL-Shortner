@@ -11,9 +11,16 @@ import {
 } from "@/components/ui/table";
 import { FaCopy } from "react-icons/fa";
 
+interface UrlData {
+    shortUrl: string;
+    originalUrl: string;
+    status: string;
+    createdDate: string;
+  }
+
 function LinkTable() {
 
-    const [urls, setUrls] = useState<any[]>([]);
+    const [urls, setUrls] = useState<UrlData[]>([]);
 
     useEffect(() => {
         const storedData = localStorage.getItem('shortenedUrls');
@@ -45,7 +52,7 @@ function LinkTable() {
       </TableHeader>
       <TableBody >
 
-      {urls.slice(0, 4).map((url: any, index: number) => (
+      {urls.slice(0, 4).map((url: UrlData, index: number) => (
           <TableRow key={index} className="bg-[#101520] border-0 h-[6vh] hover:bg-red">
             <TableCell className=" font-extralight flex  items-center text-[#C9CED6]">
               <a href={url.shortUrl} target="_blank" rel="noopener noreferrer">
