@@ -3,12 +3,38 @@ import UrlModel from "@/Models/url";
 import { nanoid } from "nanoid";
 import { NextRequest } from "next/server";
 
+const isValidUrl = (url : any) => {
+    const regex = /^(https?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w- ./?%&=]*)?$/;
+    return regex.test(url);
+};
+
+const normalizeUrl = (url: any) => {
+    // Check if the URL already has a protocol
+    if (!/^https?:\/\//i.test(url)) {
+        return `https://${url}`;
+    }
+    return url;
+};
 export async function POST (req: NextRequest){
     connectDB();
 
-    
 
-    const {originalUrl} = await req.json();
+
+    let {originalUrl} = await req.json();
+     originalUrl = normalizeUrl(originalUrl);
+
+
+    if (!isValidUrl(originalUrl)) {
+        return Response.json(
+            {
+                message: "Invalid URL",
+                success: false,
+            },
+            {
+                status: 400, // Bad request
+            }
+        );
+    }
 
     try {
         

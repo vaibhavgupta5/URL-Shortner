@@ -15,6 +15,15 @@ interface ShortenedUrl {
   createdDate: string; // Add createdDate to the interface
 }
 
+
+const normalizeUrl = (url: any) => {
+  // Check if the URL already has a protocol
+  if (!/^https?:\/\//i.test(url)) {
+      return `https://${url}`;
+  }
+  return url;
+};
+
 function InputField() {
   const { toast } = useToast();
 
@@ -38,7 +47,8 @@ function InputField() {
 
       const createdDate: string = new Date().toISOString();
 
-      saveToLocalStorage(originalUrl, sUrl, createdDate);
+      saveToLocalStorage(  normalizeUrl(originalUrl)
+      , sUrl, createdDate);
 
       if (copyOn) {
         navigator.clipboard
