@@ -1,10 +1,8 @@
 import Header from "@/components/Header";
 import InputField from "@/components/InputField";
-import { Label } from "@/components/ui/label";
-import { Switch } from "@/components/ui/switch";
+import LinkTable from "@/components/LinkTable";
 
 export default function Home() {
-
   return (
     <div className="w-full h-[100vh]">
       <Header />
@@ -17,7 +15,9 @@ export default function Home() {
           streamlines your online experience.
         </p>
         <InputField />
-
+        <div className="w-[80%] mt-12">
+        <LinkTable />
+        </div>
         
       </div>
     </div>
