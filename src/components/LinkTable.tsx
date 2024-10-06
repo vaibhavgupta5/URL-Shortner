@@ -26,7 +26,7 @@ function LinkTable() {
         if (storedData) {
           const parsedData = JSON.parse(storedData);
           setUrls(parsedData.reverse()); // Reverse to show the most recent first
-        }}, [])
+        }}, [urls])
 
         
 
