@@ -1,4 +1,28 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Linkify - URL Shortener
+An Url Shortener made using NextJs Router.
+
+## Features Added ->
+1) Interactive Home Page
+2) Shorten Urls store in Local Storage
+3) Automatic Clipboard Copy
+4) Set Clipboard Copy off
+5) Table to check the latest shortened URLs with original links.
+
+## What I Learned ->
+1) Store shortened and original URLs in the MongoDB database
+2) Store shortened and original URLs in Local Storage
+3) Use of navigator to copy text
+4) Use Next Router to redirect after checking with APIs
+5) Some UI design features
+
+## Libraies/ Frameworks/ Packages ->
+1) TypeScript
+2) NextJs
+3) ShadCn Ui
+4) Tailwind CSS
+5) Nanoid
+6) Mongoose
+7) Local Storage
 
 ## Getting Started
 
@@ -28,9 +52,3 @@ To learn more about Next.js, take a look at the following resources:
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
