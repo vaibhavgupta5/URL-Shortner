@@ -24,6 +24,10 @@ An Url Shortener made using NextJs Router.
 6) Mongoose
 7) Local Storage
 
+## How this Works?
+https://github.com/user-attachments/assets/063e489c-3bba-417f-9222-3dc07b10a611
+
+
 ## Getting Started
 
 First, run the development server:
